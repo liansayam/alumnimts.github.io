@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,37 +16,26 @@
       padding: 15px; 
       margin-bottom: 10px; 
       background-color: #fff; 
-      display: flex; 
-      align-items: center; 
     }
-    .student-card img { 
+    .student-info { 
+      display: flex; /* Mengatur layout flex untuk menyusun elemen dalam satu baris */
+      align-items: center; /* Menyelaraskan elemen di tengah secara vertikal */
+    }
+    .student-image { 
       width: 100px; 
       height: 100px; 
       object-fit: cover; 
       border-radius: 50%; 
+      margin-right: 20px; /* Memberikan ruang antara gambar dan detail */
     }
-    .student-info { 
-      margin-left: 20px; 
+    .student-details {
+      flex-grow: 1; /* Membuat div ini mengisi ruang yang tersisa */
     }
-    .student-category { 
-      color: #888; 
-      font-size: 14px; 
+    .student-category, .student-address {
+      margin: 5px 0; /* Memberikan margin atas dan bawah untuk spasi */
     }
-    .student-name { 
-      font-size: 18px; 
-      font-weight: bold; 
-    }
-    .student-address { 
-      margin-top: 5px; 
-    }
-    .student-bio { 
-      margin-top: 5px; 
-      font-style: italic; 
-      color: #555; 
-    }
-    .student-other { 
-      margin-top: 5px; 
-      color: #333; 
+    .student-bio, .student-other {
+      margin-top: 10px; /* Memberikan jarak atas untuk bio dan lainnya */
     }
     .link {
       color: blue; 
@@ -150,19 +138,15 @@
         const imageSrc = `https://drive.google.com/thumbnail?id=${gambar}`;
 
         studentCard.innerHTML = `
-         <div class="student-card">
-  <img src="${imageSrc}" alt="${nama}"/>
-  <div class="student-info">
-    <div class="student-category">
-      Kelas: <span class="link" onclick="filterByClass('${kelas}')">${kelas}</span>
-    </div>
-    <div class="student-name">${nama}</div>
-    <div class="student-address">Alamat: ${alamat}</div>
-    <p></p> <!-- Paragraf kosong untuk memisahkan informasi -->
-    <div class="student-bio">Bio: ${bio ? bio : 'Tidak ada bio'}</div>
-    <div class="student-other">Lain-lain: ${lainLain ? lainLain : 'Tidak ada informasi tambahan'}</div>
-  </div>
-</div>
+          <div class="student-info">
+            <img src="${imageSrc}" alt="${nama}" class="student-image"/>
+            <div class="student-details">
+              <div class="student-category">Kelas: <span class="link" onclick="filterByClass('${kelas}')">${kelas}</span></div>
+              <div class="student-address">Alamat: ${alamat}</div>
+            </div>
+          </div>
+          <div class="student-bio">Bio: ${bio ? bio : 'Tidak ada bio'}</div>
+          <div class="student-other">Lain-lain: ${lainLain ? lainLain : 'Tidak ada informasi tambahan'}</div>
         `;
 
         studentList.appendChild(studentCard);
