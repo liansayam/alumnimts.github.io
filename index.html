@@ -168,14 +168,19 @@
         const imageSrc = `https://drive.google.com/thumbnail?id=${gambar}`;
 
         studentCard.innerHTML = `
-          <img src="${imageSrc}" alt="${nama}"/>
-          <div class="student-info">
-            <div class="student-category">Kelas: <span class="link" onclick="filterByClass('${kelas}')">${kelas}</span></div>
-            <div class="student-name">${nama}</div>
-            <div class="student-address">Alamat: ${alamat}</div>
-            <div class="student-bio">Bio: ${bio ? bio : 'Tidak ada bio'}</div>
-            <div class="student-other">Lain-lain: ${lainLain ? lainLain : 'Tidak ada informasi tambahan'}</div>
-          </div>
+         <div class="student-card">
+  <img src="${imageSrc}" alt="${nama}"/>
+  <div class="student-info">
+    <div class="student-category">
+      Kelas: <span class="link" onclick="filterByClass('${kelas}')">${kelas}</span>
+    </div>
+    <div class="student-name">${nama}</div>
+    <div class="student-address">Alamat: ${alamat}</div>
+    <p></p> <!-- Paragraf kosong untuk memisahkan informasi -->
+    <div class="student-bio">Bio: ${bio ? bio : 'Tidak ada bio'}</div>
+    <div class="student-other">Lain-lain: ${lainLain ? lainLain : 'Tidak ada informasi tambahan'}</div>
+  </div>
+</div>
         `;
 
         studentList.appendChild(studentCard);
